@@ -6,11 +6,15 @@ from typing import List
 
 class UnionPdf:
     def __init__(
-        self, diretorio: str = None, arquivo_fina: str = None
+        self, diretorio: str = None,
+        nome_arquivo_final: str = None,
+        arquivos_pdf: List[str] = None
     ) -> None:
 
         self.diretorio = diretorio
-        self.arquivo_fina = arquivo_fina
+        self.nome_arquivo_final = nome_arquivo_final
+        self.arquivos_pdf = arquivos_pdf
+        
 
 
     def __repr__(self) -> str:
@@ -76,13 +80,15 @@ class UnionPdf:
             """
             try:
                 self.go_to_directory()
-                arquivos_pdf = self.list_files()
-                pdf_escrita = self.join_pdf(arquivos_pdf)
+                if not self.arquivos_pdf:
+                    self.arquivos_pdf = self.list_files()
+            
+                pdf_escrita = self.join_pdf(self.arquivos_pdf)
 
-                with open(self.arquivo_fina, 'wb') as f:
+                with open(self.nome_arquivo_final, 'wb') as f:
                     pdf_escrita.write(f)
 
-                print(f'PDF unido com sucesso: {self.arquivo_fina}')
+                print(f'PDF unido com sucesso: {self.nome_arquivo_final}')
                 return True
             except Exception as e:
                 print(f'Erro ao unir PDF: {e}')
