@@ -89,9 +89,3 @@ class UnionPdf:
                 return False
 
 
-if __name__ == '__main__':
-
-    diretorio = 'D:/Faculdade/pdf'
-    arquivo_final = 'Uniao.pdf'
-    uniao = UnionPdf(diretorio, arquivo_final)
-    uniao.union_pdf()
