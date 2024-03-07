@@ -36,6 +36,6 @@ uniao = UnionPdf(diretorio=diretorio,
                  arquivos_pdf=None
 )
 
-new = uniao.union_pdf()  # imprime o nome do arquivo final e retorna truw se o arquivo foi criado
+new = uniao.union_pdf()  # imprime o nome do arquivo final e retorna true se o arquivo foi criado
 print(new)
 ```
